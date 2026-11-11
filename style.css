@@ -1,6 +1,5 @@
 /* ---------- Variables: change a color or font here and it updates everywhere ---------- */
 :root {
-    /* Colors */
     --color-background: #FAFAF7;
     --color-card: #FFFFFF;
     --color-text: #1C1C1C;
@@ -8,18 +7,15 @@
     --color-border: #E5E5E0;
     --color-accent: #0F766E;
 
-    /* Fonts */
     --font-heading: "Space Grotesk", sans-serif;
     --font-body: "Inter", sans-serif;
     --font-mono: "JetBrains Mono", monospace;
 
-    /* Spacing scale */
     --space-small: 0.5rem;
     --space-medium: 1rem;
     --space-large: 2rem;
     --space-section: 5rem;
 
-    /* Other */
     --radius: 12px;
     --content-width: 1000px;
     --header-height: 64px;
@@ -84,7 +80,6 @@ img {
     display: block;
 }
 
-/* Visible outline for keyboard users */
 a:focus-visible,
 button:focus-visible {
     outline: 2px solid var(--color-accent);
@@ -92,14 +87,12 @@ button:focus-visible {
 }
 
 /* ---------- Layout ---------- */
-/* Centers content, caps its width, and keeps side padding on small screens */
 .container {
     max-width: var(--content-width);
     margin: 0 auto;
     padding: 0 var(--space-medium);
 }
 
-/* Every section gets the same generous vertical spacing */
 .section {
     padding-top: var(--space-section);
 }
@@ -108,7 +101,6 @@ button:focus-visible {
     margin-bottom: var(--space-large);
 }
 
-/* Space above the footer so the last section does not touch it */
 .site-footer {
     margin-top: var(--space-section);
     padding-top: var(--space-large);
@@ -119,7 +111,6 @@ button:focus-visible {
 }
 
 /* ---------- Navbar ---------- */
-/* Stays at the top while scrolling */
 .site-header {
     position: sticky;
     top: 0;
@@ -128,7 +119,6 @@ button:focus-visible {
     border-bottom: 1px solid var(--color-border);
 }
 
-/* Name on the left, links on the right */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -177,7 +167,6 @@ button:focus-visible {
     text-decoration: none;
 }
 
-/* Hamburger button: three stacked bars, shown on mobile only */
 .menu-button {
     display: flex;
     flex-direction: column;
@@ -263,7 +252,6 @@ button:focus-visible {
 }
 
 /* ---------- About ---------- */
-/* Narrow width keeps lines easy to read */
 #about p {
     max-width: 40rem;
 }
@@ -284,7 +272,6 @@ button:focus-visible {
     font-size: 0.8125rem;
 }
 
-/* "Learning" tags look different: dashed teal border */
 .tag-learning {
     border: 1px dashed var(--color-accent);
     color: var(--color-accent);
@@ -317,14 +304,12 @@ button:focus-visible {
 }
 
 /* ---------- Projects ---------- */
-/* Space between cards, so adding more projects just works */
 .project-list {
     display: flex;
     flex-direction: column;
     gap: var(--space-large);
 }
 
-/* Clips the GIF to the card's rounded corners */
 .project-card {
     overflow: hidden;
 }
@@ -395,7 +380,6 @@ button:focus-visible {
         padding: 0 var(--space-large);
     }
 
-    /* Navbar: hide hamburger, show links in a row */
     .menu-button {
         display: none;
     }
@@ -417,7 +401,6 @@ button:focus-visible {
         padding-top: 8rem;
     }
 
-    /* Featured project: GIF on the left, text on the right */
     .project-card-featured {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -430,14 +413,12 @@ button:focus-visible {
         border-right: 1px solid var(--color-border);
     }
 
-    /* Achievements: three cards side by side */
     .achievement-list {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 /* ---------- Fade-in on scroll ---------- */
-/* script.js adds .fade-in to each section, then .visible when it enters the screen */
 .fade-in {
     opacity: 0;
     transform: translateY(20px);

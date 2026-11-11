@@ -7,7 +7,6 @@ menuButton.addEventListener("click", function () {
     menuButton.setAttribute("aria-expanded", isOpen);
 });
 
-// Close the menu after a link is tapped, so it does not cover the page
 navLinks.addEventListener("click", function (event) {
     if (event.target.tagName === "A") {
         navLinks.classList.remove("open");
