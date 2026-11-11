@@ -1,0 +1,134 @@
+/* ---------- Variables: change a color or font here and it updates everywhere ---------- */
+:root {
+    /* Colors */
+    --color-background: #FAFAF7;
+    --color-card: #FFFFFF;
+    --color-text: #1C1C1C;
+    --color-muted: #5F5F5F;
+    --color-border: #E5E5E0;
+    --color-accent: #0F766E;
+
+    /* Fonts */
+    --font-heading: "Space Grotesk", sans-serif;
+    --font-body: "Inter", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+
+    /* Spacing scale */
+    --space-small: 0.5rem;
+    --space-medium: 1rem;
+    --space-large: 2rem;
+    --space-section: 5rem;
+
+    /* Other */
+    --radius: 12px;
+    --content-width: 1000px;
+    --header-height: 64px;
+}
+
+/* ---------- Reset: remove browser default spacing so we control it ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Smooth scrolling for nav links. The offset stops sticky header covering section titles. */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
+}
+
+/* ---------- Typography ---------- */
+body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-size: 1.125rem;
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Visible outline for keyboard users */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+}
+
+/* ---------- Layout ---------- */
+/* Centers content, caps its width, and keeps side padding on small screens */
+.container {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 var(--space-medium);
+}
+
+/* Every section gets the same generous vertical spacing */
+.section {
+    padding-top: var(--space-section);
+}
+
+.section-title {
+    margin-bottom: var(--space-large);
+}
+
+/* Space above the footer so the last section does not touch it */
+.site-footer {
+    margin-top: var(--space-section);
+    padding-top: var(--space-large);
+    padding-bottom: var(--space-large);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-muted);
+    font-size: 0.875rem;
+}
+
+/* ---------- Larger screens: bigger headings and side padding ---------- */
+@media (min-width: 768px) {
+    h1 {
+        font-size: 4rem;
+    }
+
+    h2 {
+        font-size: 2.25rem;
+    }
+
+    .container {
+        padding: 0 var(--space-large);
+    }
+}
