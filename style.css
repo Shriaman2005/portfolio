@@ -131,7 +131,8 @@ button:focus-visible {
     margin-top: var(--space-section);
     padding-top: var(--space-large);
     padding-bottom: var(--space-large);
-    border-top: 1px solid var(--color-border);
+    /* Same accent line as the header, so the page is framed top and bottom */
+    border-top: 2px solid var(--color-accent);
     color: var(--color-muted);
     font-size: 0.875rem;
 }
@@ -143,7 +144,7 @@ button:focus-visible {
     z-index: 10;
     /* Page background at 95% opacity, so the bar stays readable over content */
     background-color: var(--color-header);
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 2px solid var(--color-accent);
 }
 
 .navbar {
@@ -185,7 +186,8 @@ button:focus-visible {
     display: block;
     padding: 0.75rem 0;
     color: var(--color-muted);
-    font-size: 0.9375rem;
+    font-size: 1.125rem;
+    font-weight: 500;
 }
 
 .nav-links a:hover,
