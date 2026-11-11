@@ -3,9 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Aman | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    
+
+    <!-- Sticky top bar: name on the left, page links on the right, menu button on mobile -->
+    <header class="site-header">
+        <nav class="navbar container" aria-label="Main navigation">
+            <a href="#home" class="logo">Aman</a>
+
+            <button class="menu-button" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+                <span class="menu-bar"></span>
+                <span class="menu-bar"></span>
+                <span class="menu-bar"></span>
+            </button>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Hero: first thing visitors see -->
+        <section class="hero container" id="home">
+            <p class="hero-greeting">Hi, I'm</p>
+            <h1 class="hero-name">Aman</h1>
+            <p class="hero-subtitle">2nd-year CSE student at GTBIT · Web development and DSA</p>
+
+            <div class="button-row">
+                <a href="#projects" class="button button-primary">View projects</a>
+                <a href="assets/resume.pdf" class="button button-secondary">Resume</a>
+            </div>
+
+            <div class="social-links">
+                <a href="https://github.com/Shriaman2005" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                    </svg>
+                </a>
+                <a href="www.linkedin.com/in/aman-shrivastava-605b0b223" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+                <a href="https://leetcode.com/u/Shriaman2005/" aria-label="LeetCode">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="16 18 22 12 16 6"/>
+                        <polyline points="8 6 2 12 8 18"/>
+                    </svg>
+                </a>
+                <a href="amannishushrivastva@gmail.com" aria-label="Email">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- About: short intro written by me -->
+        <section class="section container" id="about">
+            <h2 class="section-title">About</h2>
+            <p>[ABOUT TEXT]</p>
+        </section>
+
+        <!-- Skills: tags grouped by category -->
+        <section class="section container" id="skills">
+            <h2 class="section-title">Skills</h2>
+
+            <div class="skill-group">
+                <h3 class="skill-group-title">Languages</h3>
+                <ul class="tag-list">
+                    <li class="tag">C++</li>
+                    <li class="tag">JavaScript</li>
+                    <li class="tag">SQL</li>
+                </ul>
+            </div>
+
+            <div class="skill-group">
+                <h3 class="skill-group-title">Web</h3>
+                <ul class="tag-list">
+                    <li class="tag">HTML</li>
+                    <li class="tag">CSS</li>
+                </ul>
+            </div>
+
+            <div class="skill-group">
+                <h3 class="skill-group-title">Currently learning</h3>
+                <ul class="tag-list">
+                    <li class="tag tag-learning">MongoDB</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projects: add a new <article class="project-card"> inside .project-list to add more projects -->
+        <section class="section container" id="projects">
+            <h2 class="section-title">Projects</h2>
+
+            <div class="project-list">
+                <article class="project-card project-card-featured">
+                    <img src="assets/deskbuddy.gif" alt="Demo of DeskBuddy in action" class="project-image">
+
+                    <div class="project-info">
+                        <h3 class="project-title">DeskBuddy</h3>
+                        <p class="project-description">[DESKBUDDY DESCRIPTION]</p>
+
+                        <ul class="tag-list">
+                            <li class="tag">[TECH STACK]</li>
+                        </ul>
+
+                        <p class="project-note">Selected in Top 20 at Tech Eximius 2.0</p>
+
+                        <div class="project-links">
+                            <a href="https://github.com/Shriaman2005/deskbuddy">GitHub</a>
+                            <a href="https://youtu.be/3re3coZKLrU">Demo video</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Achievements: three small cards -->
+        <section class="section container" id="achievements">
+            <h2 class="section-title">Achievements</h2>
+
+            <div class="achievement-list">
+                <article class="achievement-card">
+                    <h3 class="achievement-title">Top 20</h3>
+                    <p>Tech Eximius 2.0 Hackathon</p>
+                </article>
+                <article class="achievement-card">
+                    <h3 class="achievement-title">Selected</h3>
+                    <p>IIIT Delhi CP Contest</p>
+                </article>
+                <article class="achievement-card">
+                    <h3 class="achievement-title">400+ problems solved</h3>
+                    <p>LeetCode</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Contact: email button and social links, no form -->
+        <section class="section container" id="contact">
+            <h2 class="section-title">Contact</h2>
+            <p>[CONTACT LINE]</p>
+
+            <div class="button-row">
+                <a href="mailto:[EMAIL]" class="button button-primary">Email me</a>
+            </div>
+
+            <ul class="contact-links">
+                <li><a href="https://github.com/Shriaman2005/deskbuddy">GitHub</a></li>
+                <li><a href="www.linkedin.com/in/aman-shrivastava-605b0b223">LinkedIn</a></li>
+                <li><a href="https://leetcode.com/u/Shriaman2005/">LeetCode</a></li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- Footer: year is filled in by script.js -->
+    <footer class="site-footer container">
+        <p>© <span id="year"></span> Aman · Built with HTML, CSS and JavaScript</p>
+    </footer>
+
 </body>
 </html>
