@@ -147,12 +147,26 @@ button:focus-visible {
     text-decoration: none;
 }
 
+/* Mobile: links are hidden in a dropdown under the header. script.js adds .open to show it. */
 .nav-links {
+    display: none;
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    padding: var(--space-small) var(--space-medium);
+    background-color: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.nav-links.open {
     display: flex;
-    gap: var(--space-large);
 }
 
 .nav-links a {
+    display: block;
+    padding: 0.75rem 0;
     color: var(--color-muted);
     font-size: 0.9375rem;
 }
@@ -163,9 +177,23 @@ button:focus-visible {
     text-decoration: none;
 }
 
-/* Hamburger button is hidden until the mobile styles in Step 4 */
+/* Hamburger button: three stacked bars, shown on mobile only */
 .menu-button {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-bar {
+    height: 2px;
+    background-color: var(--color-text);
 }
 
 /* ---------- Buttons (used in Hero and Contact) ---------- */
@@ -365,5 +393,63 @@ button:focus-visible {
 
     .container {
         padding: 0 var(--space-large);
+    }
+
+    /* Navbar: hide hamburger, show links in a row */
+    .menu-button {
+        display: none;
+    }
+
+    .nav-links {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        gap: var(--space-large);
+        padding: 0;
+        border-bottom: none;
+    }
+
+    .nav-links a {
+        padding: 0;
+    }
+
+    .hero {
+        padding-top: 8rem;
+    }
+
+    /* Featured project: GIF on the left, text on the right */
+    .project-card-featured {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .project-card-featured .project-image {
+        height: 100%;
+        object-fit: cover;
+        border-bottom: none;
+        border-right: 1px solid var(--color-border);
+    }
+
+    /* Achievements: three cards side by side */
+    .achievement-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ---------- Reduced motion: turn off smooth scroll and hover movement ---------- */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        transition: none !important;
+    }
+
+    .project-card:hover,
+    .achievement-card:hover,
+    .button:hover,
+    .social-links a:hover {
+        transform: none;
     }
 }
