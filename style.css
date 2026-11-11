@@ -118,6 +118,241 @@ button:focus-visible {
     font-size: 0.875rem;
 }
 
+/* ---------- Navbar ---------- */
+/* Stays at the top while scrolling */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Name on the left, links on the right */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--header-height);
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.logo:hover {
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--space-large);
+}
+
+.nav-links a {
+    color: var(--color-muted);
+    font-size: 0.9375rem;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+/* Hamburger button is hidden until the mobile styles in Step 4 */
+.menu-button {
+    display: none;
+}
+
+/* ---------- Buttons (used in Hero and Contact) ---------- */
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-medium);
+    margin-top: var(--space-large);
+}
+
+.button {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 8px;
+    font-weight: 500;
+    transition: transform 0.2s;
+}
+
+.button:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+.button-primary {
+    background-color: var(--color-accent);
+    color: #FFFFFF;
+}
+
+.button-secondary {
+    color: var(--color-accent);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+    padding-top: 6rem;
+}
+
+.hero-greeting {
+    color: var(--color-muted);
+    font-size: 1.125rem;
+}
+
+.hero-name {
+    margin: var(--space-small) 0 var(--space-medium);
+}
+
+.hero-subtitle {
+    max-width: 36rem;
+    color: var(--color-muted);
+    font-size: 1.125rem;
+}
+
+.social-links {
+    display: flex;
+    gap: var(--space-medium);
+    margin-top: var(--space-large);
+}
+
+.social-links a {
+    color: var(--color-muted);
+    transition: color 0.2s, transform 0.2s;
+}
+
+.social-links a:hover {
+    color: var(--color-accent);
+    transform: translateY(-2px);
+}
+
+/* ---------- About ---------- */
+/* Narrow width keeps lines easy to read */
+#about p {
+    max-width: 40rem;
+}
+
+/* ---------- Tags (used in Skills and Projects) ---------- */
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-small);
+}
+
+.tag {
+    padding: 0.25rem 0.75rem;
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+}
+
+/* "Learning" tags look different: dashed teal border */
+.tag-learning {
+    border: 1px dashed var(--color-accent);
+    color: var(--color-accent);
+}
+
+/* ---------- Skills ---------- */
+.skill-group {
+    margin-bottom: var(--space-large);
+}
+
+.skill-group-title {
+    margin-bottom: var(--space-small);
+    color: var(--color-muted);
+    font-size: 0.9375rem;
+    font-weight: 500;
+}
+
+/* ---------- Cards (shared by projects and achievements) ---------- */
+.project-card,
+.achievement-card {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    transition: transform 0.2s;
+}
+
+.project-card:hover,
+.achievement-card:hover {
+    transform: translateY(-4px);
+}
+
+/* ---------- Projects ---------- */
+/* Space between cards, so adding more projects just works */
+.project-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-large);
+}
+
+/* Clips the GIF to the card's rounded corners */
+.project-card {
+    overflow: hidden;
+}
+
+.project-image {
+    width: 100%;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.project-info {
+    padding: var(--space-large);
+}
+
+.project-description {
+    margin: var(--space-small) 0 var(--space-medium);
+    color: var(--color-muted);
+}
+
+.project-note {
+    margin-top: var(--space-medium);
+    color: var(--color-accent);
+    font-weight: 500;
+}
+
+.project-links {
+    display: flex;
+    gap: var(--space-medium);
+    margin-top: var(--space-medium);
+    font-weight: 500;
+}
+
+/* ---------- Achievements ---------- */
+.achievement-list {
+    display: grid;
+    gap: var(--space-medium);
+}
+
+.achievement-card {
+    padding: var(--space-large);
+}
+
+.achievement-title {
+    margin-bottom: var(--space-small);
+}
+
+.achievement-card p {
+    color: var(--color-muted);
+}
+
+/* ---------- Contact ---------- */
+.contact-links {
+    display: flex;
+    gap: var(--space-large);
+    margin-top: var(--space-large);
+}
+
 /* ---------- Larger screens: bigger headings and side padding ---------- */
 @media (min-width: 768px) {
     h1 {
