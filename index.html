@@ -12,10 +12,10 @@
 </head>
 <body>
 
-    <!-- Sticky top bar: name on the left, page links on the right, menu button on mobile -->
+    <!-- Navbar -->
     <header class="site-header">
         <nav class="navbar container" aria-label="Main navigation">
-            <a href="#home" class="logo">Aman</a>
+            <a href="#home" class="logo"><span class="code-bracket">&lt;</span>Aman<span class="code-bracket">/&gt;</span></a>
 
             <button class="menu-button" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
                 <span class="menu-bar"></span>
@@ -29,25 +29,32 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#achievements">Achievements</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><button class="theme-toggle" type="button">Light mode</button></li>
             </ul>
         </nav>
     </header>
 
     <main>
 
-        <!-- Hero: first thing visitors see -->
+        <!-- Hero -->
         <section class="hero container" id="home">
-          <img src="assets/profile.png" alt="Portrait of Aman wearing glasses and a blue kurta" class="hero-photo">
+          <div class="hero-photo-wrap">
+            <img src="assets/profile.png" alt="Portrait of Aman wearing glasses and a blue kurta" class="hero-photo">
+            <span class="floating-symbol symbol-1" aria-hidden="true">&lt;/&gt;</span>
+            <span class="floating-symbol symbol-2" aria-hidden="true">{ }</span>
+            <span class="floating-symbol symbol-3" aria-hidden="true">=&gt;</span>
+            <span class="floating-symbol symbol-4" aria-hidden="true">#</span>
+            <span class="floating-symbol symbol-5" aria-hidden="true">;</span>
+          </div>
 
           <div class="hero-text">
             <p class="hero-greeting">Hi, I'm</p>
-            <h1 class="hero-name">Aman</h1>
+            <h1 class="hero-name">Aman<span class="cursor" aria-hidden="true">_</span></h1>
             <p class="hero-subtitle">2nd-year CSE student at GTBIT · Web development and DSA</p>
 
             <div class="button-row">
                 <a href="#projects" class="button button-primary">View projects</a>
-                <a href="assets/resume.pdf" class="button button-secondary">Resume</a>
+                <!-- Resume button: uncomment after adding assets/resume.pdf -->
+                <!-- <a href="assets/resume.pdf" class="button button-secondary">Resume</a> -->
             </div>
 
             <div class="social-links">
@@ -79,27 +86,29 @@
           </div>
         </section>
 
-        <!-- About: short intro written by me -->
+        <!-- About -->
         <section class="section container" id="about">
             <h2 class="section-title">About</h2>
-            <p>[ABOUT TEXT]</p>
+            <p>I'm Aman, a second-year CSE student at GTBIT, Delhi. I like building things I'd actually use myself. My biggest one so far is DeskBuddy, which turns an old Android phone into a desk companion. I've solved 400+ problems on LeetCode in C++ and I'm currently learning backend development with MongoDB. I daily-drive Linux and like tinkering with my setup almost as much as writing code.</p>
         </section>
 
-        <!-- Skills: tags grouped by category -->
+        <!-- Skills -->
         <section class="section container" id="skills">
             <h2 class="section-title">Skills</h2>
 
             <div class="skill-group">
-                <h3 class="skill-group-title">Languages</h3>
+                <h3 class="skill-group-title">// Languages</h3>
                 <ul class="tag-list">
                     <li class="tag">C++</li>
                     <li class="tag">JavaScript</li>
+                    <li class="tag">Python</li>
                     <li class="tag">SQL</li>
+                    <li class="tag">Bash</li>
                 </ul>
             </div>
 
             <div class="skill-group">
-                <h3 class="skill-group-title">Web</h3>
+                <h3 class="skill-group-title">// Web</h3>
                 <ul class="tag-list">
                     <li class="tag">HTML</li>
                     <li class="tag">CSS</li>
@@ -107,14 +116,24 @@
             </div>
 
             <div class="skill-group">
-                <h3 class="skill-group-title">Currently learning</h3>
+                <h3 class="skill-group-title">// Tools</h3>
+                <ul class="tag-list">
+                    <li class="tag">Git</li>
+                    <li class="tag">Linux</li>
+                    <li class="tag">SSH</li>
+                    <li class="tag">VS Code</li>
+                </ul>
+            </div>
+
+            <div class="skill-group">
+                <h3 class="skill-group-title">// Currently learning</h3>
                 <ul class="tag-list">
                     <li class="tag tag-learning">MongoDB</li>
                 </ul>
             </div>
         </section>
 
-        <!-- Projects: add a new <article class="project-card"> inside .project-list to add more projects -->
+        <!-- Projects -->
         <section class="section container" id="projects">
             <h2 class="section-title">Projects</h2>
 
@@ -124,10 +143,15 @@
 
                     <div class="project-info">
                         <h3 class="project-title">DeskBuddy</h3>
-                        <p class="project-description">[DESKBUDDY DESCRIPTION]</p>
+                        <p class="project-description">Turns an old Android phone into Chip, a pixel-art desk companion that shows your laptop's stats, music, timers and weather, and lets you dictate text into your laptop by voice. Runs over home Wi-Fi, no cloud account needed.</p>
 
                         <ul class="tag-list">
-                            <li class="tag">[TECH STACK]</li>
+                            <li class="tag">Python</li>
+                            <li class="tag">JavaScript</li>
+                            <li class="tag">HTML/CSS</li>
+                            <li class="tag">Termux</li>
+                            <li class="tag">SSH</li>
+                            <li class="tag">whisper.cpp</li>
                         </ul>
 
                         <p class="project-note">Selected in Top 20 at Tech Eximius 2.0</p>
@@ -145,16 +169,79 @@
                     <div class="project-info">
                         <h3 class="project-title">My Linux setup</h3>
                         <p class="project-description">Arch Linux + Hyprland rice I use daily for development</p>
-
-                        <div class="project-links">
-                            <a href="[DOTFILES LINK]" target="_blank" rel="noopener noreferrer">Dotfiles</a>
-                        </div>
                     </div>
+                </article>
+            </div>
+
+            <!-- Mini projects -->
+            <h3 class="mini-heading">Mini projects</h3>
+            <div class="mini-project-list">
+                <article class="mini-card">
+                    <h4 class="mini-title">Amazon Clone</h4>
+                    <p class="mini-description">Recreated Amazon's homepage header, search bar, nav strip and hero banner to practice CSS layout.</p>
+                    <ul class="tag-list">
+                        <li class="tag">HTML</li>
+                        <li class="tag">CSS</li>
+                        <li class="tag">Flexbox</li>
+                    </ul>
+                    <a href="projects/amazon-clone/index.html" target="_blank" rel="noopener noreferrer" class="mini-link">View &rarr;</a>
+                </article>
+                <article class="mini-card">
+                    <h4 class="mini-title">Simon Says</h4>
+                    <p class="mini-description">Memory game: repeat a color sequence that grows by one every level. Tracks your high score.</p>
+                    <ul class="tag-list">
+                        <li class="tag">DOM events</li>
+                        <li class="tag">setTimeout</li>
+                        <li class="tag">Arrays</li>
+                    </ul>
+                    <a href="projects/simon-game/index.html" target="_blank" rel="noopener noreferrer" class="mini-link">Play &rarr;</a>
+                </article>
+
+                <article class="mini-card">
+                    <h4 class="mini-title">Rock Paper Scissors</h4>
+                    <p class="mini-description">Play against the computer, which picks randomly. Live score for both sides.</p>
+                    <ul class="tag-list">
+                        <li class="tag">Math.random</li>
+                        <li class="tag">DOM</li>
+                        <li class="tag">Conditionals</li>
+                    </ul>
+                    <a href="projects/rock-paper-scissors/index.html" target="_blank" rel="noopener noreferrer" class="mini-link">Play &rarr;</a>
+                </article>
+
+                <article class="mini-card">
+                    <h4 class="mini-title">Tic Tac Toe</h4>
+                    <p class="mini-description">Two-player game that checks 8 win patterns after every move and detects draws.</p>
+                    <ul class="tag-list">
+                        <li class="tag">Arrays</li>
+                        <li class="tag">Event listeners</li>
+                    </ul>
+                    <a href="projects/tic-tac-toe/index.html" target="_blank" rel="noopener noreferrer" class="mini-link">Play &rarr;</a>
+                </article>
+
+                <article class="mini-card">
+                    <h4 class="mini-title">Currency Converter</h4>
+                    <p class="mini-description">Converts between currencies using live exchange rates from the Frankfurter API, with country flags.</p>
+                    <ul class="tag-list">
+                        <li class="tag">fetch</li>
+                        <li class="tag">async/await</li>
+                        <li class="tag">API</li>
+                    </ul>
+                    <a href="projects/currency-converter/index.html" target="_blank" rel="noopener noreferrer" class="mini-link">Play &rarr;</a>
+                </article>
+
+                <article class="mini-card">
+                    <h4 class="mini-title">To-Do App</h4>
+                    <p class="mini-description">Add and delete tasks. One click listener on the list handles every delete button.</p>
+                    <ul class="tag-list">
+                        <li class="tag">DOM</li>
+                        <li class="tag">Event delegation</li>
+                    </ul>
+                    <a href="projects/todo-app/index.html" target="_blank" rel="noopener noreferrer" class="mini-link">Play &rarr;</a>
                 </article>
             </div>
         </section>
 
-        <!-- Achievements: three small cards -->
+        <!-- Achievements -->
         <section class="section container" id="achievements">
             <h2 class="section-title">Achievements</h2>
 
@@ -174,10 +261,10 @@
             </div>
         </section>
 
-        <!-- Contact: email button and social links, no form -->
+        <!-- Contact -->
         <section class="section container" id="contact">
             <h2 class="section-title">Contact</h2>
-            <p>[CONTACT LINE]</p>
+            <p class="contact-line"><span class="code-comment">// </span>Open to internships, collaborations and hackathon teams. The fastest way to reach me is email.</p>
 
             <div class="button-row">
                 <a href="mailto:amannishushrivastva@gmail.com" class="button button-primary">Email me</a>
@@ -192,9 +279,9 @@
 
     </main>
 
-    <!-- Footer: year is filled in by script.js -->
+    <!-- Footer -->
     <footer class="site-footer container">
-        <p>© <span id="year"></span> Aman · Built with HTML, CSS and JavaScript</p>
+        <p>© <span id="year"></span> Aman</p>
     </footer>
 
 </body>

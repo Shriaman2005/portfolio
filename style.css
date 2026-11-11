@@ -1,14 +1,14 @@
-/* ---------- Variables: change a color or font here and it updates everywhere ---------- */
+/* ---------- Variables ---------- */
 :root {
-    --color-background: #0E1116;
-    --color-card: #161B22;
-    --color-border: #262C36;
-    --color-text: #E6E8EB;
-    --color-muted: #9AA4B2;
-    --color-accent: #3BA3D9;
+    --color-background: #FAFAF7;
+    --color-card: #FFFFFF;
+    --color-border: #E5E5E0;
+    --color-text: #1C1C1C;
+    --color-muted: #5F5F5F;
+    --color-accent: #1A6E9E;
     --color-accent-strong: #1F88BF;
-    --color-accent-soft: rgba(59, 163, 217, 0.12);
-    --color-header: rgba(14, 17, 22, 0.95);
+    --color-accent-soft: rgba(31, 136, 191, 0.12);
+    --color-header: #1F88BF;
 
     --font-heading: "Space Grotesk", sans-serif;
     --font-body: "Inter", sans-serif;
@@ -24,26 +24,13 @@
     --header-height: 64px;
 }
 
-/* Light theme: script.js sets data-theme="light" on <html> and these colors replace the dark ones */
-[data-theme="light"] {
-    --color-background: #FAFAF7;
-    --color-card: #FFFFFF;
-    --color-border: #E5E5E0;
-    --color-text: #1C1C1C;
-    --color-muted: #5F5F5F;
-    --color-accent: #1A6E9E;
-    --color-accent-soft: rgba(31, 136, 191, 0.12);
-    --color-header: rgba(250, 250, 247, 0.95);
-}
-
-/* ---------- Reset: remove browser default spacing so we control it ---------- */
+/* ---------- Reset ---------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Smooth scrolling for nav links. The offset stops sticky header covering section titles. */
 html {
     scroll-behavior: smooth;
     scroll-padding-top: var(--header-height);
@@ -116,7 +103,6 @@ button:focus-visible {
     margin-bottom: var(--space-large);
 }
 
-/* Short accent bar under every section title */
 .section-title::after {
     content: "";
     display: block;
@@ -125,13 +111,17 @@ button:focus-visible {
     margin-top: var(--space-small);
     background-color: var(--color-accent);
     border-radius: 2px;
+    transition: width 0.4s;
+}
+
+.section:hover .section-title::after {
+    width: 80px;
 }
 
 .site-footer {
     margin-top: var(--space-section);
     padding-top: var(--space-large);
     padding-bottom: var(--space-large);
-    /* Same accent line as the header, so the page is framed top and bottom */
     border-top: 2px solid var(--color-accent);
     color: var(--color-muted);
     font-size: 0.875rem;
@@ -142,9 +132,21 @@ button:focus-visible {
     position: sticky;
     top: 0;
     z-index: 10;
-    /* Page background at 95% opacity, so the bar stays readable over content */
     background-color: var(--color-header);
-    border-bottom: 2px solid var(--color-accent);
+    animation: slide-down 0.5s ease-out;
+}
+
+@keyframes slide-down {
+    from {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes fade-down {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
 }
 
 .navbar {
@@ -158,14 +160,19 @@ button:focus-visible {
     font-family: var(--font-heading);
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--color-text);
+    color: #FFFFFF;
+    transition: letter-spacing 0.3s;
+}
+
+.logo .code-bracket {
+    color: #FFFFFF;
 }
 
 .logo:hover {
+    letter-spacing: 1px;
     text-decoration: none;
 }
 
-/* Mobile: links are hidden in a dropdown under the header. script.js adds .open to show it. */
 .nav-links {
     display: none;
     position: absolute;
@@ -174,33 +181,37 @@ button:focus-visible {
     right: 0;
     flex-direction: column;
     padding: var(--space-small) var(--space-medium);
-    background-color: var(--color-background);
-    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-header);
 }
 
 .nav-links.open {
     display: flex;
+    animation: fade-down 0.3s ease-out;
 }
 
 .nav-links a {
     display: block;
-    padding: 0.75rem 0;
-    color: var(--color-muted);
-    font-size: 1.125rem;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    color: #FFFFFF;
+    font-size: 1rem;
     font-weight: 500;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
-    color: var(--color-accent);
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.18);
+    transform: translateY(-2px);
     text-decoration: none;
 }
 
-/* Active link (set by script.js) also gets a small underline */
 .nav-links a.active {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 6px;
+    background-color: #FFFFFF;
+    color: var(--color-accent-strong);
+}
+
+.nav-links a:active {
+    transform: scale(0.95);
 }
 
 .menu-button {
@@ -217,29 +228,25 @@ button:focus-visible {
 }
 
 .menu-bar {
+    width: 24px;
     height: 2px;
-    background-color: var(--color-text);
+    background-color: #FFFFFF;
+    transition: transform 0.3s, opacity 0.3s;
 }
 
-/* Theme toggle: small outlined button at the end of the nav links */
-.theme-toggle {
-    margin: var(--space-small) 0;
-    padding: 0.25rem 0.75rem;
-    background: none;
-    border: 1px solid var(--color-border);
-    border-radius: 999px;
-    color: var(--color-muted);
-    font-family: var(--font-mono);
-    font-size: 0.8125rem;
-    cursor: pointer;
+.menu-button[aria-expanded="true"] .menu-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
 }
 
-.theme-toggle:hover {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
+.menu-button[aria-expanded="true"] .menu-bar:nth-child(2) {
+    opacity: 0;
 }
 
-/* ---------- Buttons (used in Hero and Contact) ---------- */
+.menu-button[aria-expanded="true"] .menu-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- Buttons ---------- */
 .button-row {
     display: flex;
     flex-wrap: wrap;
@@ -258,6 +265,10 @@ button:focus-visible {
 .button:hover {
     text-decoration: none;
     transform: translateY(-2px);
+}
+
+.button:active {
+    transform: scale(0.97);
 }
 
 .button-primary {
@@ -279,7 +290,7 @@ button:focus-visible {
     background-color: var(--color-accent-soft);
 }
 
-/* ---------- Hero (mobile: stacked and centered) ---------- */
+/* ---------- Hero ---------- */
 .hero {
     display: flex;
     flex-direction: column;
@@ -294,7 +305,6 @@ button:focus-visible {
     justify-content: center;
 }
 
-/* Round photo with an accent ring; outline-offset leaves a gap between ring and photo */
 .hero-photo {
     width: 12rem;
     aspect-ratio: 1;
@@ -302,6 +312,12 @@ button:focus-visible {
     border-radius: 50%;
     outline: 3px solid var(--color-accent-strong);
     outline-offset: 6px;
+    transition: transform 0.4s, outline-offset 0.4s;
+}
+
+.hero-photo:hover {
+    transform: scale(1.03) rotate(-2deg);
+    outline-offset: 12px;
 }
 
 .hero-greeting {
@@ -332,7 +348,7 @@ button:focus-visible {
 
 .social-links a:hover {
     color: var(--color-accent);
-    transform: translateY(-2px);
+    transform: translateY(-4px) rotate(-8deg);
 }
 
 /* ---------- About ---------- */
@@ -340,14 +356,13 @@ button:focus-visible {
     max-width: 40rem;
 }
 
-/* ---------- Tags (used in Skills and Projects) ---------- */
+/* ---------- Tags ---------- */
 .tag-list {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-small);
 }
 
-/* Small pill; the transparent border keeps it the same size as .tag-learning */
 .tag {
     padding: 0.25rem 0.75rem;
     background-color: var(--color-accent-soft);
@@ -356,6 +371,13 @@ button:focus-visible {
     color: var(--color-accent);
     font-family: var(--font-mono);
     font-size: 0.8125rem;
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.tag:hover {
+    background-color: var(--color-accent-strong);
+    color: #FFFFFF;
+    transform: translateY(-2px);
 }
 
 .tag-learning {
@@ -376,19 +398,23 @@ button:focus-visible {
     font-weight: 500;
 }
 
-/* ---------- Cards (shared by projects and achievements) ---------- */
+/* ---------- Cards ---------- */
 .project-card,
 .achievement-card {
     background-color: var(--color-card);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
-    transition: transform 0.2s, border-color 0.2s;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 
 .project-card:hover,
 .achievement-card:hover {
     border-color: var(--color-accent);
     transform: translateY(-4px);
+}
+
+.achievement-card:hover {
+    box-shadow: inset 4px 0 0 var(--color-accent);
 }
 
 /* ---------- Projects ---------- */
@@ -398,7 +424,6 @@ button:focus-visible {
     gap: var(--space-large);
 }
 
-/* Mobile: image on top, info below */
 .project-card {
     display: flex;
     flex-direction: column;
@@ -406,7 +431,6 @@ button:focus-visible {
     padding: var(--space-large);
 }
 
-/* Fixed 16:9 box, so a missing image keeps its space instead of collapsing */
 .project-image {
     width: 100%;
     aspect-ratio: 16 / 9;
@@ -414,6 +438,11 @@ button:focus-visible {
     background-color: var(--color-card);
     border: 1px solid var(--color-border);
     border-radius: 8px;
+    transition: transform 0.4s;
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.03);
 }
 
 .project-description {
@@ -432,6 +461,15 @@ button:focus-visible {
     gap: var(--space-medium);
     margin-top: var(--space-medium);
     font-weight: 500;
+}
+
+.project-links a {
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.project-links a:hover {
+    transform: translateX(4px);
 }
 
 /* ---------- Achievements ---------- */
@@ -460,7 +498,7 @@ button:focus-visible {
     margin-top: var(--space-large);
 }
 
-/* ---------- Larger screens: bigger headings and side padding ---------- */
+/* ---------- Larger screens ---------- */
 @media (min-width: 768px) {
     h1 {
         font-size: 4rem;
@@ -470,7 +508,6 @@ button:focus-visible {
         font-size: 2.25rem;
     }
 
-    /* Only left/right: the shorthand would also reset .section's padding-top to 0 */
     .container {
         padding-left: var(--space-large);
         padding-right: var(--space-large);
@@ -485,20 +522,21 @@ button:focus-visible {
         position: static;
         flex-direction: row;
         align-items: center;
-        gap: var(--space-large);
+        gap: var(--space-small);
         padding: 0;
         border-bottom: none;
     }
 
-    .theme-toggle {
-        margin: 0;
+    .nav-links li {
+        animation: fade-down 0.4s ease-out backwards;
     }
 
-    .nav-links a {
-        padding: 0;
-    }
+    .nav-links li:nth-child(1) { animation-delay: 0.2s; }
+    .nav-links li:nth-child(2) { animation-delay: 0.3s; }
+    .nav-links li:nth-child(3) { animation-delay: 0.4s; }
+    .nav-links li:nth-child(4) { animation-delay: 0.5s; }
+    .nav-links li:nth-child(5) { animation-delay: 0.6s; }
 
-    /* Hero: photo and text side by side, text left-aligned */
     .hero {
         flex-direction: row;
         align-items: center;
@@ -520,7 +558,6 @@ button:focus-visible {
         font-size: 4.5rem;
     }
 
-    /* Projects: image left, info right. Smaller cards get a narrower image column. */
     .project-card {
         display: grid;
         grid-template-columns: 1fr 2fr;
@@ -548,7 +585,7 @@ button:focus-visible {
     transform: none;
 }
 
-/* ---------- Reduced motion: turn off smooth scroll and hover movement ---------- */
+/* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
@@ -561,7 +598,147 @@ button:focus-visible {
     .project-card:hover,
     .achievement-card:hover,
     .button:hover,
-    .social-links a:hover {
+    .button:active,
+    .social-links a:hover,
+    .hero-photo:hover,
+    .tag:hover,
+    .project-card:hover .project-image,
+    .project-links a:hover {
+        transform: none;
+    }
+}
+
+/* ---------- Code-style decorations ---------- */
+
+.code-bracket {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.code-comment {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+}
+
+.skill-group-title {
+    font-family: var(--font-mono);
+}
+
+.cursor {
+    color: var(--color-accent);
+    animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.hero-photo-wrap {
+    position: relative;
+}
+
+.floating-symbol {
+    position: absolute;
+    padding: 0.25rem 0.6rem;
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    animation: float 4s ease-in-out infinite;
+}
+
+.symbol-1 { top: 2%;     left: -6%;  }
+.symbol-2 { top: 10%;    right: -8%; animation-delay: 1s; }
+.symbol-3 { bottom: 12%; left: -10%; animation-delay: 2s; }
+.symbol-4 { bottom: 0;   right: 2%;  animation-delay: 0.5s; }
+.symbol-5 { top: 48%;    right: -14%; animation-delay: 1.5s; }
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cursor,
+    .floating-symbol,
+    .site-header,
+    .nav-links li,
+    .nav-links.open {
+        animation: none;
+    }
+}
+
+/* ---------- Doodle wallpaper ---------- */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: url("assets/doodles.svg");
+    background-size: 360px;
+    opacity: 0.06;
+    pointer-events: none;
+    filter: invert(1);
+}
+
+.site-footer{
+    text-align: center;
+}
+/* ---------- Mini projects ---------- */
+.mini-heading {
+    margin: 3rem 0 var(--space-medium);
+    font-size: 1.25rem;
+}
+
+.mini-project-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--space-medium);
+}
+
+.mini-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-small);
+    padding: 1.5rem;
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.mini-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+}
+
+.mini-title {
+    font-size: 1.0625rem;
+}
+
+.mini-description {
+    flex-grow: 1;
+    color: var(--color-muted);
+    font-size: 0.9375rem;
+}
+
+.mini-link {
+    margin-top: var(--space-small);
+    font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mini-card:hover {
         transform: none;
     }
 }

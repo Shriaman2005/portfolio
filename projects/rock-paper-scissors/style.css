@@ -1,0 +1,72 @@
+*{
+    margin:0;
+    padding:0;
+    text-align:center; 
+}
+
+h1{
+    background-color: yellow;
+    font-size: 80px;
+    color: grey;
+    height:6rem;
+    line-height:5rem;
+}
+
+body{
+    background-color: grey;
+}
+
+.choice{
+    height:220px;
+    width:220px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease;
+}
+
+.choice:hover{
+    cursor: pointer;
+    background-color: yellow;
+}
+
+img{
+    height:100%;
+    width:100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+.choices{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+    margin-top: 5rem;
+}
+
+.score-board{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin-top: 3rem;
+    gap: 5rem;
+}
+
+.msg-container{
+    margin-top: 5rem;
+}
+
+#msg{
+    background-color: yellow;
+    color:Grey;
+    font-size: 2rem;
+    display: inline;
+    padding: 1rem;
+    border-radius: 1rem;
+}
