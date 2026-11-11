@@ -1,12 +1,14 @@
 /* ---------- Variables: change a color or font here and it updates everywhere ---------- */
 :root {
-    --color-background: #FAFAF7;
-    --color-card: #FFFFFF;
-    --color-text: #1C1C1C;
-    --color-muted: #5F5F5F;
-    --color-border: #E5E5E0;
-    --color-accent: #0F766E;
-    --color-photo: #1F88BF;
+    --color-background: #0E1116;
+    --color-card: #161B22;
+    --color-border: #262C36;
+    --color-text: #E6E8EB;
+    --color-muted: #9AA4B2;
+    --color-accent: #3BA3D9;
+    --color-accent-strong: #1F88BF;
+    --color-accent-soft: rgba(59, 163, 217, 0.12);
+    --color-header: rgba(14, 17, 22, 0.95);
 
     --font-heading: "Space Grotesk", sans-serif;
     --font-body: "Inter", sans-serif;
@@ -20,6 +22,18 @@
     --radius: 12px;
     --content-width: 1000px;
     --header-height: 64px;
+}
+
+/* Light theme: script.js sets data-theme="light" on <html> and these colors replace the dark ones */
+[data-theme="light"] {
+    --color-background: #FAFAF7;
+    --color-card: #FFFFFF;
+    --color-border: #E5E5E0;
+    --color-text: #1C1C1C;
+    --color-muted: #5F5F5F;
+    --color-accent: #1A6E9E;
+    --color-accent-soft: rgba(31, 136, 191, 0.12);
+    --color-header: rgba(250, 250, 247, 0.95);
 }
 
 /* ---------- Reset: remove browser default spacing so we control it ---------- */
@@ -102,6 +116,17 @@ button:focus-visible {
     margin-bottom: var(--space-large);
 }
 
+/* Short accent bar under every section title */
+.section-title::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    margin-top: var(--space-small);
+    background-color: var(--color-accent);
+    border-radius: 2px;
+}
+
 .site-footer {
     margin-top: var(--space-section);
     padding-top: var(--space-large);
@@ -116,7 +141,8 @@ button:focus-visible {
     position: sticky;
     top: 0;
     z-index: 10;
-    background-color: var(--color-background);
+    /* Page background at 95% opacity, so the bar stays readable over content */
+    background-color: var(--color-header);
     border-bottom: 1px solid var(--color-border);
 }
 
@@ -168,6 +194,13 @@ button:focus-visible {
     text-decoration: none;
 }
 
+/* Active link (set by script.js) also gets a small underline */
+.nav-links a.active {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+}
+
 .menu-button {
     display: flex;
     flex-direction: column;
@@ -184,6 +217,24 @@ button:focus-visible {
 .menu-bar {
     height: 2px;
     background-color: var(--color-text);
+}
+
+/* Theme toggle: small outlined button at the end of the nav links */
+.theme-toggle {
+    margin: var(--space-small) 0;
+    padding: 0.25rem 0.75rem;
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    cursor: pointer;
+}
+
+.theme-toggle:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
 }
 
 /* ---------- Buttons (used in Hero and Contact) ---------- */
@@ -208,29 +259,47 @@ button:focus-visible {
 }
 
 .button-primary {
-    background-color: var(--color-accent);
+    background-color: var(--color-accent-strong);
+    border-color: var(--color-accent-strong);
     color: #FFFFFF;
+}
+
+.button-primary:hover {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
 }
 
 .button-secondary {
     color: var(--color-accent);
 }
 
-/* ---------- Hero ---------- */
+.button-secondary:hover {
+    background-color: var(--color-accent-soft);
+}
+
+/* ---------- Hero (mobile: stacked and centered) ---------- */
 .hero {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: var(--space-large);
     padding-top: 4rem;
+    text-align: center;
 }
 
+.hero .button-row,
+.hero .social-links {
+    justify-content: center;
+}
+
+/* Round photo with an accent ring; outline-offset leaves a gap between ring and photo */
 .hero-photo {
     width: 12rem;
     aspect-ratio: 1;
     object-fit: cover;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    box-shadow: 12px 12px 0 var(--color-photo);
+    border-radius: 50%;
+    outline: 3px solid var(--color-accent-strong);
+    outline-offset: 6px;
 }
 
 .hero-greeting {
@@ -276,18 +345,21 @@ button:focus-visible {
     gap: var(--space-small);
 }
 
+/* Small pill; the transparent border keeps it the same size as .tag-learning */
 .tag {
     padding: 0.25rem 0.75rem;
-    background-color: var(--color-card);
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
+    background-color: var(--color-accent-soft);
+    border: 1px solid transparent;
+    border-radius: 999px;
+    color: var(--color-accent);
     font-family: var(--font-mono);
     font-size: 0.8125rem;
 }
 
 .tag-learning {
-    border: 1px dashed var(--color-accent);
-    color: var(--color-accent);
+    background-color: transparent;
+    border: 1px dashed var(--color-muted);
+    color: var(--color-muted);
 }
 
 /* ---------- Skills ---------- */
@@ -308,11 +380,12 @@ button:focus-visible {
     background-color: var(--color-card);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
-    transition: transform 0.2s;
+    transition: transform 0.2s, border-color 0.2s;
 }
 
 .project-card:hover,
 .achievement-card:hover {
+    border-color: var(--color-accent);
     transform: translateY(-4px);
 }
 
@@ -323,17 +396,22 @@ button:focus-visible {
     gap: var(--space-large);
 }
 
+/* Mobile: image on top, info below */
 .project-card {
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-large);
+    padding: var(--space-large);
 }
 
+/* Fixed 16:9 box, so a missing image keeps its space instead of collapsing */
 .project-image {
     width: 100%;
-    border-bottom: 1px solid var(--color-border);
-}
-
-.project-info {
-    padding: var(--space-large);
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
 }
 
 .project-description {
@@ -366,6 +444,7 @@ button:focus-visible {
 
 .achievement-title {
     margin-bottom: var(--space-small);
+    color: var(--color-accent);
 }
 
 .achievement-card p {
@@ -389,8 +468,10 @@ button:focus-visible {
         font-size: 2.25rem;
     }
 
+    /* Only left/right: the shorthand would also reset .section's padding-top to 0 */
     .container {
-        padding: 0 var(--space-large);
+        padding-left: var(--space-large);
+        padding-right: var(--space-large);
     }
 
     .menu-button {
@@ -401,36 +482,51 @@ button:focus-visible {
         display: flex;
         position: static;
         flex-direction: row;
+        align-items: center;
         gap: var(--space-large);
         padding: 0;
         border-bottom: none;
+    }
+
+    .theme-toggle {
+        margin: 0;
     }
 
     .nav-links a {
         padding: 0;
     }
 
+    /* Hero: photo and text side by side, text left-aligned */
     .hero {
         flex-direction: row;
         align-items: center;
         gap: 4rem;
         padding-top: 6rem;
+        text-align: left;
+    }
+
+    .hero .button-row,
+    .hero .social-links {
+        justify-content: flex-start;
     }
 
     .hero-photo {
         width: 20rem;
     }
 
-    .project-card-featured {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+    .hero-name {
+        font-size: 4.5rem;
     }
 
-    .project-card-featured .project-image {
-        height: 100%;
-        object-fit: cover;
-        border-bottom: none;
-        border-right: 1px solid var(--color-border);
+    /* Projects: image left, info right. Smaller cards get a narrower image column. */
+    .project-card {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        align-items: center;
+    }
+
+    .project-card-featured {
+        grid-template-columns: 1fr 1fr;
     }
 
     .achievement-list {
